@@ -2,11 +2,11 @@ import lexer
 pila = ["EOF", "Program"]
 indice = 0
 tabla = {"Program": {"clp": [], "si": ["Estructura", "Program"], "id": ["Estructura", "Program"], "mientras": ["Estructura", "Program"], "mostrar": ["Estructura", "Program"], "aceptar": ["Estructura", "Program"], "EOF": []},
-         "Termino2": {"*": ["*", "Factor", "Termino2"], "+": [], "entonces": [], ")": [], "EOF": []},
-         "Estructura": {"id": ["id", "eq", "Expresion"], "si": ["si", "Expresion", "entonces", "op", "Program", "clp", "sino"], "mostrar": ["mostrar", "Expresion"], "aceptar": ["aceptar", "id"], "mientras": ["mientras", "id", "esMenorQue", "Valor", "hacer", "op", "Program", "clp"]},
+         "Termino2": {"*": ["*", "Factor", "Termino2"], "+": [], "entonces": [], ")": [], "EOF": [], "mientras": [], "mostrar": [], "aceptar": [], "si": [], "id": [], "clp": []},
+         "Estructura": {"id": ["id", "eq", "Expresion"], "si": ["si", "Expresion", "entonces", "op", "Program", "clp", "sino", "op", "Program", "clp"], "mostrar": ["mostrar", "Expresion"], "aceptar": ["aceptar", "id"], "mientras": ["mientras", "id", "esMenorQue", "Valor", "hacer", "op", "Program", "clp"]},
          "Expresion": {"id": ["Termino", "Expresion2"], "num": ["Termino", "Expresion2"], "(": ["Termino", "Expresion2"]},
          "Valor": {"id": ["id"], "num": ["num"]},
-         "Expresion2": {"+": ["+", "Termino", "Expresion2"], "entonces": [], ")": [], "EOF": []},
+         "Expresion2": {"+": ["+", "Termino", "Expresion2"], "entonces": [], ")": [], "EOF": [], "mientras": [], "mostrar": [], "aceptar": [], "si": [], "id": [], "clp": []},
          "Termino": {"id": ["Factor", "Termino2"], "num": ["Factor", "Termino2"], "(": ["Factor", "Termino2"], "EOF": []},
          "Factor": {"id": ["Valor"], "num": ["Valor"], "(": ["(", "Expresion", ")"]}
          }
@@ -44,6 +44,7 @@ def parser(lista_tokens):
 
 
 # parser(lexer.lexer("mostrar si#"))
-parser(lexer.lexer("mientras id esMenorQue a hacer op clp#"))
-# parser(lexer.lexer("id eq id#"))
+# parser(lexer.lexer("mientras id esMenorQue a hacer op clp#"))
+parser(lexer.lexer(
+    "si (aux+bux)*cont entonces op mostrar aux clp sino op aceptar bux clp#"))
 # parser(lexer.lexer("id eq (num)* id#"))
